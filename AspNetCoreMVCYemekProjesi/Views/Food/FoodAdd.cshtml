@@ -1,0 +1,48 @@
+﻿@model AspNetCoreMVCYemekProjesi.Data.Models.urunekle
+@{
+    ViewData["Title"] = "FoodAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form class="form-group" action="FoodAdd" asp-controller="Food" method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-8">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Food Name</th>
+                            <td>@Html.TextBoxFor(m => m.FoodName, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>@Html.TextBoxFor(m => m.FoodDescription, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td>@Html.TextBoxFor(m => m.FoodPrice, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <th>Image</th>
+                            <td>
+                                <input type="file" name="ImageURL" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Stock</th>
+                            <td>@Html.TextBoxFor(m => m.FoodStock, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <th>Category</th>
+                            <td>@Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-6">
+                <button style="width:100px" class="btn btn-success">Save</button>
+            </div>
+        </div>
+    </div>
+</form>

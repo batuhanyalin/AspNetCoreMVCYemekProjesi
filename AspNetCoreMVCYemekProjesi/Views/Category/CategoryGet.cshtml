@@ -1,0 +1,52 @@
+﻿@model AspNetCoreMVCYemekProjesi.Data.Models.Category
+@{
+    ViewData["Title"] = "CategoryGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("CategoryUpdate", "Category", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-8">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Category ID</th>
+                            <td>
+                                @Html.TextBoxFor(m => m.CategoryID, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Category Name</th>
+                            <td>
+                                @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>
+                                @Html.TextBoxFor(m => m.CategoryDescription, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                @Html.TextBoxFor(m => m.CategoryStatus, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-6">
+                <button class="btn btn-warning" id="btn1">Update</button>
+            </div>
+            <script>
+                $('#btn1').click(function () {
+                    alert("Güncelleme işlemi başarıyla yapıldı.");
+                });
+            </script>
+        </div>
+    </div>
+}

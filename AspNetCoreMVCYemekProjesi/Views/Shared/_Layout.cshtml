@@ -1,0 +1,67 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<title>Asp.Net Core MVC Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="~/twitter-bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+<link href="~/twitter-bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
+<link href="~/twitter-bootstrap/css/bootstrap-utilities.css" rel="stylesheet" />
+
+<link href="~/CoreTemplateWeb2-master/css/bootstrap.css" rel="stylesheet" />
+<link href="~/CoreTemplateWeb2-master/css/clndr.css" rel="stylesheet" />
+<link href="~/CoreTemplateWeb2-master/css/jqvmap.css" rel="stylesheet" />
+<link href="~/CoreTemplateWeb2-master/css/nav.css" rel="stylesheet" />
+<link href="~/CoreTemplateWeb2-master/css/style.css" rel="stylesheet" />
+
+<body>
+
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large"
+                onclick="w3_close()">
+            Close &times;
+        </button>
+        <div style="font-size:20px">
+            <a href="/Category/Index/" class="w3-bar-item w3-button">Category</a>
+            <a href="/Food/Index" class="w3-bar-item w3-button">Foods</a>
+            <a href="/Chart/Statistics/" class="w3-bar-item w3-button">Statistics</a>
+            <a href="/Login/LogOut/" class="w3-bar-item w3-button">Logout</a>
+        </div>
+    </div>
+
+    <div id="main">
+
+        <div class="w3-teal">
+            <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+            <div class="w3-container">
+                <h1>Asp.Net Core MVC Project - Admin Panel</h1>
+            </div>
+        </div>
+        <div class="w3-container">
+            <br />
+            @RenderBody()
+        </div>
+
+    </div>
+
+    <script>
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("mySidebar").style.width = "25%";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+
+</body>
+</html>

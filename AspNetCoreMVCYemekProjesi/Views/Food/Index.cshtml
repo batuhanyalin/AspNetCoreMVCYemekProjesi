@@ -1,0 +1,68 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@model IPagedList<AspNetCoreMVCYemekProjesi.Data.Models.Food>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6">
+            <a style="width:200px" class="btn btn-secondary" href="/Food/FoodAdd/">Add New Food</a>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col col-md-6">
+            <h2>Food List</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Food Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Stock</th>
+                        <th>Category Name</th>
+                        <th>Details</th>
+                        <th>Transaction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.FoodID</td>
+                            <td>@x.FoodName</td>
+                            <td>@x.FoodDescription</td>
+                            <td>@x.FoodPrice</td>
+                            <td>
+                                <img style="height:50px;width:50px;" src="@x.FoodImageURL" />                             
+                            </td>
+                            <td>@x.FoodStock</td>
+                            <td>@x.Category.CategoryName</td>
+                            <td>
+                              <a class="btn btn-light" href="#">Get Detail</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-success" href="/Food/FoodGet/@x.FoodID">Update</a>
+                                @Html.ActionLink("Delete", "FoodDelete", "Food", new { id = x.FoodID }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you want to delete this object?')" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-6">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>

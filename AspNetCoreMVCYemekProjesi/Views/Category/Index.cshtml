@@ -1,0 +1,60 @@
+﻿
+@model List<AspNetCoreMVCYemekProjesi.Data.Models.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6">
+            <a style="width:200px" class="btn btn-secondary" href="/Category/CategoryAdd/">Add New Category</a>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col col-md-6">
+            <h2>Category List</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col col-md-6">
+            @using (Html.BeginForm())
+            {
+                <p>
+                    Category Name: @Html.TextBox("p")
+                    <input type="submit" value="Find" />
+                </p>
+            }
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col col-md-8">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category Name</th>
+                        <th>Satatus</th>
+                        <th>Transaction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.CategoryID.</td>
+                            <td>@x.CategoryName</td>
+                            <td>@x.CategoryStatus</td>
+                            <td>
+                                <a class="btn btn-success" href="/Category/CategoryGet/@x.CategoryID">Update</a>
+                                @Html.ActionLink("Delete", "CategoryDelete", "Category", new { id = x.CategoryID }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you want to status off this object?')" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
